@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -11,7 +11,7 @@ def Index():
 
 @app.route('/recolectorManos')
 def HandsRecollector():
-    return "PaginaDeManos"
+    return render_template('recolectorManos.html')
 
 @app.route('/protocolo')
 def protocol():
