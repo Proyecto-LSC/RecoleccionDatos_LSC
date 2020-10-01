@@ -45,15 +45,10 @@ const init = () => {
 
     // Consulta la lista de dispositivos de entrada de audio y llena el select
     const llenarLista = () => {
-        navigator
-            .mediaDevices
-            .enumerateDevices()
-            .then(dispositivos => {
+        navigator.mediaDevices.enumerateDevices() .then(dispositivos => {
                 
                 dispositivos.forEach((dispositivo, indice) => {
-                    if (dispositivo.kind === "audioinput") {
-                        
-                    } else if (dispositivo.kind === "videoinput") {
+                    if (dispositivo.kind === "videoinput") {
                         const $opcion = document.createElement("option");
                         // Firefox no trae nada con label, que viva la privacidad
                         // y que muera la compatibilidad
@@ -70,16 +65,15 @@ const init = () => {
         idIntervalo = setInterval(refrescar, 500);
     };
 
-    // Comienza a grabar el audio con el dispositivo seleccionado
+    // Comienza a grabar el audio con el dispositivo seleccionado7
     const comenzarAGrabar = () => {
         if (!$dispositivosDeVideo.options.length) return alert("No hay cámara");
         // No permitir que se grabe doblemente
         if (mediaRecorder) return alert("Ya se está grabando");
 
-        navigator.mediaDevices.getUserMedia({
-                video: {
-                    deviceId: $dispositivosDeVideo.value, // Indicar dispositivo de vídeo
-                }
+        navigator.mediaDevices.getUserMedia({   
+                audio: False,
+                video: True
             })
             .then(stream => {
                 // Poner stream en vídeo
@@ -92,12 +86,12 @@ const init = () => {
                 // En el arreglo pondremos los datos que traiga el evento dataavailable
                 const fragmentosDeAudio = [];
                 // Escuchar cuando haya datos disponibles
-                mediaRecorder.addEventListener("dataavailable", evento => {
-                    // Y agregarlos a los fragmentos
+                mediaRecorder.addEventListener("ondataavailable", evento => {
+                    // Y agregarlos a los fragmentos    
                     fragmentosDeAudio.push(evento.data);
                 });
                 // Cuando se detenga (haciendo click en el botón) se ejecuta esto
-                mediaRecorder.addEventListener("stop", () => {
+                mediaRecorder.addEventListener("stop", () => {  
                     // Pausar vídeo
                     $video.pause();
                     // Detener el stream
