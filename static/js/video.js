@@ -86,7 +86,7 @@ const init = () => {
                 // En el arreglo pondremos los datos que traiga el evento dataavailable
                 const fragmentosDeAudio = [];
                 // Escuchar cuando haya datos disponibles
-                mediaRecorder.addEventListener("ondataavailable", evento => {
+                mediaRecorder.addEventListener("dataavailable", evento => {
                     // Y agregarlos a los fragmentos    
                     fragmentosDeAudio.push(evento.data);
                 });

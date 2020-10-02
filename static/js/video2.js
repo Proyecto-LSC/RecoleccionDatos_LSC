@@ -5,31 +5,38 @@ const
         $btnComenzarGrabacion = document.querySelector("#btnComenzarGrabacion"),
         $btnDetenerGrabacion = document.querySelector("#btnDetenerGrabacion");
 
-const comenzarAGrabar =()=>{
 
-    if(navigator.mediaDevices){
-        console.log('getUserMedia supported');
-        
-        var constraints = { video: true};
-        var chunks = [];
-        
-        navigator.mediaDevices.getUserMedia(constraints).then(
-            function (stream){
-                var mediaRecorder = new mediaRecorder( stream);
-                visualize(stream);
-                $video.srcObject = stream;
-                $video.play();
-                mediaRecorder.start();
-                console.log(mediaRecorder.state);
-            }
-        );
-        
-        
-        
-        
+
+if(navigator.mediaDevices.getUserMedia){
+    console.log('getUserMedia supported');
+    
+    var constraints = { video: true};
+    var chunks = [];
+    
+    let onSuccess = function(stream) {
+        const mediaRecorder = new mediaRecorder(stream);
+        visualize(stream)
+
+        $btnComenzarGrabacion.onclick = function (){
+            $video.srcObject = stream;
+            $video.play();
+            mediaRecorder.start()
+            console.log(mediaRecorder.state);
+            stop.disabled = false;
+            record.disabled = true;
         }
-}  
+
+        $btnDetenerGrabacion.onclick = function (){
+            mediaRecorder.stop();
+            console.log(mediaRecorder.state);
+            stop.disabled = true;
+            record.disabled = false;
+        }
+    }
+
+}
+
+        
 
 
-$btnComenzarGrabacion.addEventListener("click", comenzarAGrabar);
-$btnDetenerGrabacion.addEventListener("click", detenerGrabacion);
+
