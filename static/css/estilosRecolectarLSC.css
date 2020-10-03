@@ -34,3 +34,10 @@ section{
 	margin-left: 50px;
 	color: white;
 }
+
+.texto-ejemplo{
+	margin-top: 20px;
+	font-family: Bahnschrift;
+	font-size: 25px;
+	color: darkslategray;
+}
