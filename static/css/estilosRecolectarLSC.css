@@ -41,3 +41,27 @@ section{
 	font-size: 25px;
 	color: darkslategray;
 }
+
+.video-container{
+	margin: 0px auto;
+	margin-bottom: 50px;
+	width: 600px;
+	height: 475px;
+	border: 10px #333 solid;
+	border-radius: 25px;
+}
+
+.video-element {
+	width: 580px;
+	height: 455px;
+	background-color: #666;
+	border-radius: 10px;
+}
+
+#recordingIcon{
+	height: 15px;
+	width: 15px;
+	background-color: red;
+	border-radius: 50%;
+	display: none;
+}
