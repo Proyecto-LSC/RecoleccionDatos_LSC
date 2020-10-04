@@ -1,11 +1,11 @@
 .navbar-light .navbar-nav .nav-item .nav-link:hover,
 .navbar-light .navbar-nav .nav-item.active .nav-link {
-	background: #262626;
+	background: #ac1111;
 	color: #fff;
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link {
-    color: #fff;
+    color: blue;
     padding: 5px 15px;
 }
 
