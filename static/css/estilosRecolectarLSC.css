@@ -10,12 +10,18 @@ section{
 .header-background{
 	content: '';
 	position: relative;
-	height: 50vmin;
+	height: 70vmin;
 	padding: 1px;
 	max-width: 100%;
-	background-color: darkblue;
+	background: url(/static/img/AUNAR/trazado.svg);
 	background-size: contain;
 	background-repeat: no-repeat;
+}
+
+.logo-header{
+	float: right;
+	margin-right: 25px;
+	
 }
 
 .titulo{
