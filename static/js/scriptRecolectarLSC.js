@@ -12,6 +12,7 @@ if (navigator.mediaDevices.getUserMedia) {
     navigator.mediaDevices.getUserMedia({ video: true })
         .then(function (stream) {
             video.srcObject = stream;
+            
             var mediaRecorder = new MediaRecorder(stream);
 
             record.onclick = function startRecording() {
@@ -52,6 +53,22 @@ if (navigator.mediaDevices.getUserMedia) {
     function videoData() {
         var blob = new Blob(recordedChunks, {
             type: "video/mp4"
+        });
+        sendToFlask(blob);
+    }
+    function sendToFlask(videoObj){
+        var valorLetra = letra_actual.value;
+        var fd = new FormData();
+        fd.append('file', videoObj, (valorLetra+"_1.mp4"));
+        $.ajax({
+            type: "POST",
+            url: '/guardarVideo',
+            data: fd,
+            processData: false,
+            contentType: false,
+            success: function() {
+                console.log("Elemento Enviado");
+            }
         });
     }
 }
