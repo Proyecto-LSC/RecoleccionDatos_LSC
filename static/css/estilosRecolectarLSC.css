@@ -78,3 +78,7 @@ section{
     align-items: center;
     justify-content: center;
 }
+
+#mostrarImagen{
+	width: 70%;
+}

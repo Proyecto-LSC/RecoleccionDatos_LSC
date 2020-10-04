@@ -86,5 +86,7 @@ function nextLetra(){
 		document.querySelector('#letra_next').textContent = 'Letra A';
 		document.getElementById('letra_next').value = 'a';
 	}
+	var filename = "letra"+letraNext;
+    var path = "/static/img/Signs/"+filename+".jpg";
 	document.getElementById("mostrarImagen").src = path;
 }

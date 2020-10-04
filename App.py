@@ -11,7 +11,7 @@ def Index():
 def getVideo():
     video = request.files['file']
     filename = video.filename
-    datasetPath = "static/Dataset_LSC2/Manos/"
+    datasetPath = "static/Dataset_LSC/"
     Path(datasetPath).mkdir(parents=True, exist_ok=True)
     fullpath = datasetPath + filename[:-6] + "/"
     Path(fullpath).mkdir(parents=True, exist_ok=True)
