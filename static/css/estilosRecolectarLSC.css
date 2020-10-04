@@ -1,0 +1,80 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+section{
+	width: 100%;
+}
+
+.header-background{
+	content: '';
+	position: relative;
+	height: 50vmin;
+	padding: 1px;
+	max-width: 100%;
+	background-color: darkblue;
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.titulo{
+	font-family: Bahnschrift;
+	font-size: 90px;
+	margin-top: 30px;
+	margin-left: 50px;
+	margin-bottom: 0;
+	color: white;
+}
+
+.subtitulo{
+	font-family: Bahnschrift;
+	font-size: 30px;
+	margin-top: 20px;
+	margin-left: 50px;
+	color: white;
+}
+
+.texto-ejemplo{
+	margin-top: 20px;
+	font-family: Bahnschrift;
+	font-size: 25px;
+	color: black;
+}
+
+.video-container{
+	margin: 0px auto;
+	margin-bottom: 50px;
+	width: 600px;
+	height: 475px;
+	border: 10px #333 solid;
+	border-radius: 25px;
+}
+
+.video-element {
+	width: 580px;
+	height: 455px;
+	background-color: #666;
+	border-radius: 10px;
+}
+
+#recordingIcon{
+	height: 15px;
+	width: 15px;
+	background-color: red;
+	border-radius: 50%;
+	display: none;
+}
+
+#circle {
+    background-color:#fff;
+    border:5px solid black;    
+    height:120px;
+    width:120px;
+    border-radius:50%;
+    color: red;
+    font-weight: bold;
+    font-size: 35px;
+    align-items: center;
+    justify-content: center;
+}

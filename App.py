@@ -6,7 +6,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def Index():
-    return "PaginaDeInicioOscar"
+    return render_template("recolectarLSC.html")
 
 
 @app.route('/recolectorManos')

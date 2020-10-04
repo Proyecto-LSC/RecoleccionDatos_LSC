@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Recoleccion Datos LSC</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/css/estilosRecolectarLSC.css')}}"/>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+</head>
+<body>
+    <!-- Navbar-->
+	
+    <!-- Navbar -->
+    
+    <section class="header-background">
+		<div>
+			<h1 class="titulo">Recolección de Datos LSC</h1>
+			<h2 class="subtitulo">Sitio Web diseñado para recolectar imágenes de las distintas <br>
+				señas estáticas pertenecientes a las letras del abecedario LSC </h2>
+		</div>
+	</section>
+
+    <div class="container">
+		<div class="row">
+		  <div class="col-sm">
+			<div class="text-left">
+				<label style="font-size: 25px;"><b>Seña actual:</b></label></br>
+				<button type="button" class="btn btn-primary btn-lg" id="letra_actual" value="a">Letra A</button>
+			</div>			
+			<div class="text-center">
+				<label id="labelImg" class="texto-ejemplo"><b>Imagen de ejemplo:</b></label>
+				<!-- <img src="/static/img/Signs/letraa.jpg" id="mostrarImagen"> -->
+			</div>		
+			<div class="text-center">
+				<button type="button" class="btn btn-danger btn-lg" id="record" style="margin-top: 40px; display: inline-block;">Recolectar (Grabar)</button>
+				<button type="button" class="btn btn-dark btn-lg" id="stop" style="margin-top: 10px;">Detener</button>
+			</div>
+          </div>
+          <div class="col-sm">
+			<div class="video-container">
+				<video autoplay class="video-element" id="video"></video>
+				<canvas id="canvas" hidden></canvas>
+				<label id="textGrabando" style="display: none; font-size: large;"><span id="recordingIcon"></span><b>Grabando</b></label>
+			</div>
+          </div>
+          <div class="col-sm">
+			<div class="text-right">
+				<label style="font-size: 25px;"><b>Siguiente seña:</b></label></br>
+				<button type="button" class="btn btn-outline-secondary btn-lg" id="letra_next" value="b">Letra B</button>
+			</div>
+			<div class="text-center">
+				<label id="inicioTimer" class="texto-ejemplo" style="display: inline-block; margin-top: 85px;"><b>La grabación iniciará en:</b></label></br>
+				<div id="circle" style="display: inline-flex;">5</div>
+			</div>
+		  </div>
+        </div>
+    </div>
+
+	<!-- Footer -->
+	
+	<!-- Footer -->
+	<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+</body>
+</html>
