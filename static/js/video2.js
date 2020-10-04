@@ -71,8 +71,11 @@ navigator.mediaDevices.getUserMedia(constraints)
 
 
         mediaRecorder.onstop = function (e) {
-            const blobVideo = new Blob(chunks, { type: "video/webm" });
+            const blobVideo = new Blob(chunks, { type: "video/mp4" });
             chunks=[];
+            
+            sendToFlask(blobVideo)
+            /*
             // Crear una URL o enlace para descargar
             const urlParaDescargar = URL.createObjectURL(blobVideo);
 
@@ -87,15 +90,30 @@ navigator.mediaDevices.getUserMedia(constraints)
             // Y remover el objeto
             window.URL.revokeObjectURL(urlParaDescargar);
 
-            // Crear una URL o enlace para descargar
+            // Crear una URL o enlace para descargar*/
 
         }
-
-
     }).catch(
         function (err) {
             console.log(err.name + ": " + err.message);
         });
+
+
+
+        function sendToFlask(videoObj){
+            var fd = new FormData();
+            fd.append('file', videoObj, ('Secuencia1'+"_1.mp4"));
+            $.ajax({
+                type: "POST",
+                url: '/guardarVideo',
+                data: fd,
+                processData: false,
+                contentType: false,
+                success: function() {
+                    console.log("Elemento Enviado");
+                }
+            });
+        }
 
 
 
