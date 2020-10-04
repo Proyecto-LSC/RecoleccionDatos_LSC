@@ -1,7 +1,7 @@
 .navbar-light .navbar-nav .nav-item .nav-link:hover,
 .navbar-light .navbar-nav .nav-item.active .nav-link {
-	background: #ac1111;
-	color:cornflowerblue;
+    background: #262626;
+	color: #7f7f7f;
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link {
