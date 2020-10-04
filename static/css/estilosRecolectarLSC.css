@@ -65,3 +65,16 @@ section{
 	border-radius: 50%;
 	display: none;
 }
+
+#circle {
+    background-color:#fff;
+    border:5px solid black;    
+    height:120px;
+    width:120px;
+    border-radius:50%;
+    color: red;
+    font-weight: bold;
+    font-size: 35px;
+    align-items: center;
+    justify-content: center;
+}
