@@ -4,45 +4,81 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Header -->
+	  {% include "Navbar.html" %}
+	  <!-- Header -->
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-
-    <title>Hello, world!</title>
+    <!-- CSS MAIN-->
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/mainEstilos.css')}}"/>
+    <title>Recolector de Manos</title>
   </head>
+
   <body>
-    <h1>Hello, world!</h1>
+    
+      <h1>Bienvenido al Recolector de manos</h1>
+    
+    
 
 
-    <div>
-        <br><br>
-        <label for="dispositivosDeVideo">Cámara:</label><br>
-        <select name="dispositivosDeVideo" id="dispositivosDeVideo"></select>
-        <br><br>
-        <center><video  id="video"></video></center>
-        
-        <br><br>
-        <p id="duracion"></p>
-        <br>
-        <button id="btnComenzarGrabacion">Comenzar</button>
-        <button id="btnDetenerGrabacion">Detener</button>
-    </div>
-    <div class="container">
+    <div class="container-fluid mt-4 mb-4 ">
       <div class="row">
-        <div class="col-12">
-          <canvas id="video2" width="720" height="720"></canvas>
+        <div class="col-6">
+          <div class="container-fluid" style="background-color: blue;">
+            <div class="row">
+              <div class="col-12" style="padding-left: 0px;">
+                <video  id="video"  class="float-left" style="background-image: url('static/img/aunar/aunar_logo.png') ; "></video>
+                <p id="duracion"></p>
+              </div>
+              <div class="col-12 mt-2">
+                <button  type="button" class="btn btn-primary" id="btnComenzarGrabacion">Comenzar</button>
+                <button type="button" class="btn btn-secondary" id="btnDetenerGrabacion">Detener</button>
+              </div>
+            </div>
+          </div>
+          
+          
+        </div>
+        <div class="col-6 ">
+          <div class="container-fluid " style="background-color: aquamarine; ">
+            <div class="row">
+              <div class="col-12">
+                Brayan aqui un titulo descriptivo de la pasarela de imagenes
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
     </div>
     
     
+    
 
-    <script src="/static/js/video2.js"></script>
+    
+
+
+
+    
+
+
+
+  
+      
+    <div class=" mt-4">
+      {% include "Footer.html" %}
+    </div>
+    <!-- Footer -->
+    
+	  <!-- Footer -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+    <script src="/static/js/video2.js"></script>
+
   </body>
 </html>

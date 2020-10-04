@@ -1,0 +1,171 @@
+body{
+	margin: 0;
+	padding: 0;
+}
+
+section{
+	width: 100%;
+}
+
+.header-background{
+	content: '';
+	position: relative;
+	height: 70vmin;
+	padding: 1px;
+	max-width: 100%;
+	background: url(/static/Img/AUNAR/trazado.svg);
+	background-size: contain;
+	background-repeat: no-repeat;
+}
+
+.titulo{
+	font-family: Bahnschrift;
+	font-size: 90px;
+	margin-top: 30px;
+	margin-left: 50px;
+	margin-bottom: 0;
+	color: white;
+}
+
+.subtitulo{
+	font-family: Bahnschrift;
+	font-size: 30px;
+	margin-top: 20px;
+	margin-left: 50px;
+	color: white;
+}
+
+.video-container{
+	margin: 0px auto;
+	margin-bottom: 50px;
+	width: 600px;
+	height: 475px;
+	border: 10px #333 solid;
+	border-radius: 25px;
+}
+
+.video-element {
+	width: 580px;
+	height: 455px;
+	background-color: #666;
+	border-radius: 10px;
+}
+
+.grid-container{
+	display: grid;
+  	grid-template-columns: 350px auto 350px;
+  	grid-template-rows: 250px 180px;
+}
+
+.itemEspacio{
+	grid-column: 3 / 4;
+	grid-row: 1 / 2;
+	justify-self: center;
+}
+
+.itemParar{
+	grid-column: 3 / 4;
+	grid-row: 2 / 3;
+	justify-self: center;
+}
+
+.text-container{
+	margin: auto;
+	margin-bottom: 60px;
+	width: 1000px;
+	height: 200px;
+	border: 3px #000 solid;
+}
+
+.text-area{
+	margin: 8px 8px auto;
+	width: 976px;
+	height: 176px;
+	border: 3px #000 solid;
+	font-family: Courier New;
+	font-size: 35px;
+	text-indent: 15px;
+}
+
+.text-camara{
+	font-family: Comic Sans MS;
+	font-size: 20px;
+	text-align: right;
+	color: #707070;
+}
+
+.text-normal{
+	font-family: Bahnschrift;
+	font-size: 20px;
+	text-align: center;
+	color: #707070;
+}
+
+.img-espacio{
+	width: 110px;
+	height: 105px;
+	margin-top: 30px;
+	background: url(imagenes/Espacio.png);
+	background-size: 110px;
+}
+
+.img-stop{
+	width: 110px;
+	height: 105px;
+	margin-top: 30px;
+	background: url(imagenes/Parar.png);
+	background-size: 110px;
+}
+
+.grid-container-footer{
+	display: grid;
+  	grid-template-columns: 280px 80px 50px 200px 80px 100px 50px 80px 250px 200px;
+}
+
+.texto-footer{
+	font-family: Bahnschrift;
+	font-size: 20px;
+	text-align: left;
+	color: white;
+}
+
+.footer{
+	background-color: #001063;
+	width: auto;
+	height: 180px;
+}
+
+.linea3{
+	height: 24vh; 
+	border: none;
+	border-left: 1px solid white;
+	margin-left: 40px;
+}
+
+.logo-header{
+	float: right;
+	margin-right: 25px;
+	
+}
+
+#mostrarImagen{
+	width: 40%;
+}
+
+#imgLetra{
+	font-family: Bahnschrift;
+}
+
+.texto-num{
+	margin-top: 20px;
+	margin-left: 18px;
+	font-family: Bahnschrift;
+	font-size: large;
+}
+
+.texto-ejemplo{
+	margin-top: 20px;
+	font-family: Bahnschrift;
+	font-size: 25px;
+	color: darkslategray;
+}
