@@ -35,6 +35,10 @@ if (navigator.mediaDevices.getUserMedia) {
                 mediaRecorder.stop();
                 console.log("recorder stopped");
             }
+            mediaRecorder.ondataavailable = function(e) {
+                recordedChunks.push(e.data);
+                videoData();
+            }
     })
 
     .catch(function (err0r) {
@@ -45,4 +49,9 @@ if (navigator.mediaDevices.getUserMedia) {
         canvas.width = video.videoWidth;
         canvas.height = video.videoHeight;
     })
+    function videoData() {
+        var blob = new Blob(recordedChunks, {
+            type: "video/mp4"
+        });
+    }
 }
