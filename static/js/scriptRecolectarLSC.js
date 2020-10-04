@@ -29,6 +29,12 @@ if (navigator.mediaDevices.getUserMedia) {
 					mediaRecorder.stop();
 				}, (numSec*1000));
             }
+            stop.onclick = function() {
+                document.getElementById("recordingIcon").style.display = 'none';
+                document.getElementById("textGrabando").style.display = 'none';
+                mediaRecorder.stop();
+                console.log("recorder stopped");
+            }
     })
 
     .catch(function (err0r) {
