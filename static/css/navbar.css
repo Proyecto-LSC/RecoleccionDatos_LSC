@@ -3,3 +3,20 @@
 	background: #262626;
 	color: #fff;
 }
+
+.navbar-light .navbar-nav .nav-item .nav-link {
+    color: #fff;
+    padding: 5px 15px;
+}
+
+.navbar-light .navbar-toggler {
+    border: none;
+    color: #fff;
+    border: 2px solid #7f7f7f;
+    border-radius: 0;
+    outline: none;
+}
+
+.navbar-collapse {
+    background: #fff;
+}
