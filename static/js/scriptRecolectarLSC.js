@@ -72,3 +72,19 @@ if (navigator.mediaDevices.getUserMedia) {
         });
     }
 }
+function nextLetra(){
+	var letraNext = letra_next.value;
+	var signs = ['a','b','c','d','e','f','i','k','l','m','n','o','p','q','r','t','u','v','w','x','y','espacio','parar'];
+	var index = signs.indexOf(letraNext);
+
+	document.querySelector('#letra_actual').textContent = 'Letra ' + letraNext.toUpperCase();
+	document.getElementById('letra_actual').value = letraNext;
+	if (letraNext!='parar'){
+		document.querySelector('#letra_next').textContent = 'Letra ' + signs[index+1].toUpperCase();
+		document.getElementById('letra_next').value = signs[index+1];
+	}else{
+		document.querySelector('#letra_next').textContent = 'Letra A';
+		document.getElementById('letra_next').value = 'a';
+	}
+	document.getElementById("mostrarImagen").src = path;
+}
