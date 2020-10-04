@@ -1,7 +1,7 @@
 .navbar-light .navbar-nav .nav-item .nav-link:hover,
 .navbar-light .navbar-nav .nav-item.active .nav-link {
 	background: #ac1111;
-	color: #fff;
+	color:cornflowerblue;
 }
 
 .navbar-light .navbar-nav .nav-item .nav-link {
@@ -11,12 +11,12 @@
 
 .navbar-light .navbar-toggler {
     border: none;
-    color: #fff;
+    color: cornflowerblue;
     border: 2px solid #7f7f7f;
     border-radius: 0;
     outline: none;
 }
 
 .navbar-collapse {
-    background: #fff;
+    background: cornflowerblue;
 }
