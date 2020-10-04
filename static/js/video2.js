@@ -28,6 +28,13 @@ const comenzarAContar = () => {
     idIntervalo = setInterval(refrescar, 500);
 };
 
+
+const detenerConteo = () => {
+    clearInterval(idIntervalo);
+    tiempoInicio = null;
+    $duracion.textContent = "";
+}
+
 navigator.mediaDevices.getUserMedia(constraints)
     .then(function (mediaStream) {
         video.srcObject = mediaStream;
@@ -36,6 +43,10 @@ navigator.mediaDevices.getUserMedia(constraints)
         record.onclick = function () {
             console.log("pi ti ");
             mediaRecorder.start();
+            $('.carousel').carousel(0,{
+                interval: 2000
+                
+              })
             comenzarAContar();
             console.log("hola");
             console.log(mediaRecorder.state);
@@ -49,10 +60,13 @@ navigator.mediaDevices.getUserMedia(constraints)
         }
         stop.onclick = function () {
             mediaRecorder.stop();
+            detenerConteo();
             console.log(mediaRecorder.state);
             stop.disabled = true;
             record.disabled = false;
         }
+
+
 
 
 
