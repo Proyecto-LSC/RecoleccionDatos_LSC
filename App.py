@@ -1,3 +1,4 @@
+import os, glob
 from flask import Flask, render_template, request, Response
 from pathlib import Path
 
@@ -11,13 +12,23 @@ def Index():
 def getVideo():
     video = request.files['file']
     filename = video.filename
-    datasetPath = "static/Dataset_LSC2/Manos/"
+    datasetPath = "static/Dataset_LSC/"
     Path(datasetPath).mkdir(parents=True, exist_ok=True)
     fullpath = datasetPath + filename[:-6] + "/"
     Path(fullpath).mkdir(parents=True, exist_ok=True)
     Path(fullpath + "frames/").mkdir(parents=True, exist_ok=True)
     filepath = Path(fullpath + filename)
-    video.save(filepath)
+    if video:
+        if not (os.path.isfile(filepath)):
+            video.save(filepath)
+        else:
+            list_of_files = glob.glob(str(filepath.parents[0]) + '/*')
+            latest_file = max(list_of_files, key=os.path.getctime)
+            tempPath = Path(latest_file)
+            lastVideoNum = int(tempPath.stem.split("_", 1) [1]) + 1
+            filename = str(filepath.parents[0].name) + "_" + str(lastVideoNum) + ".mp4"
+            video.save(fullpath + filename)
+            filepath = Path(fullpath + filename)
     return Response("success")
 
 @app.route('/recolectorManos')
