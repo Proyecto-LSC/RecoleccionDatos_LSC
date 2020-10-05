@@ -3,8 +3,51 @@ var record = document.getElementById("record");
 var stop = document.getElementById("stop");
 var letra_actual = document.getElementById("letra_actual");
 var letra_next = document.getElementById("letra_next");
+let tiempoInicio, idIntervalo;
+const $duracion = document.querySelector("#duracionVideo");
 const canvas = document.querySelector('#canvas');
 const ctx = canvas.getContext('2d');
+
+const segundosATiempo = numeroDeSegundos => {
+    let horas = Math.floor(numeroDeSegundos / 60 / 60);
+    numeroDeSegundos -= horas * 60 * 60;
+    let minutos = Math.floor(numeroDeSegundos / 60);
+    numeroDeSegundos -= minutos * 60;
+    numeroDeSegundos = parseInt(numeroDeSegundos);
+    if (horas < 10) horas = "0" + horas;
+    if (minutos < 10) minutos = "0" + minutos;
+    if (numeroDeSegundos < 10) numeroDeSegundos = "0" + numeroDeSegundos;
+
+    return `${horas}:${minutos}:${numeroDeSegundos}`;
+};
+
+const refrescar = () => {
+    $duracion.textContent = segundosATiempo((Date.now() - tiempoInicio) / 1000);
+}
+
+const comenzarAContar = () => {
+    tiempoInicio = Date.now();
+    idIntervalo = setInterval(refrescar, 500);
+};
+
+const detenerConteo = () => {
+    clearInterval(idIntervalo);
+    tiempoInicio = null;
+    $duracion.textContent = "";
+}
+
+/*const antesGrabacion = () => {
+    document.getElementById("inicioTimer").style.display = 'inline-block';
+    document.getElementById("circle").style.display = 'inline-flex';
+    var numSeg = 5;
+    for (let i = 1; i <= 5; i++) {
+        document.querySelector('#circle').textContent = numSeg;
+        setTimeout(() => console.log(`#${i}`), 1000 * i);
+        numSeg -= 1;
+    }
+    document.getElementById("inicioTimer").style.display = 'none';
+    document.getElementById("circle").style.display = 'none';
+}*/
 
 if (navigator.mediaDevices.getUserMedia) {
     var recordedChunks = [];
@@ -17,8 +60,9 @@ if (navigator.mediaDevices.getUserMedia) {
 
             record.onclick = function startRecording() {
                 var numSec = 15;
-				recordedChunks = [];
-				mediaRecorder.start();
+                recordedChunks = [];
+                mediaRecorder.start();
+                comenzarAContar();
 				document.getElementById("recordingIcon").style.display = 'inline-block';
 				document.getElementById("textGrabando").style.display = 'inline-block';
 				console.log(mediaRecorder.state);
@@ -27,13 +71,15 @@ if (navigator.mediaDevices.getUserMedia) {
 					console.log("stopping");
 					document.getElementById("recordingIcon").style.display = 'none';
 					document.getElementById("textGrabando").style.display = 'none';
-					mediaRecorder.stop();
+                    mediaRecorder.stop();
+                    detenerConteo();
 				}, (numSec*1000));
             }
             stop.onclick = function() {
                 document.getElementById("recordingIcon").style.display = 'none';
                 document.getElementById("textGrabando").style.display = 'none';
                 mediaRecorder.stop();
+                detenerConteo();
                 console.log("recorder stopped");
             }
             mediaRecorder.ondataavailable = function(e) {
