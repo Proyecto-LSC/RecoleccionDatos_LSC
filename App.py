@@ -31,7 +31,7 @@ def getVideoManos():
             video.save(fullpath + filename)
             filepath = Path(fullpath + filename)
             
-        video2frames(filepath)
+    video2frames(filepath)
             
             
     return Response("success")
