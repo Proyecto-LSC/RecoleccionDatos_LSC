@@ -58,6 +58,7 @@ navigator.mediaDevices.getUserMedia(constraints)
         mediaRecorder.ondataavailable = function (e) {
             chunks.push(e.data);
         }
+
         stop.onclick = function () {
             mediaRecorder.stop();
             detenerConteo();
@@ -102,7 +103,7 @@ navigator.mediaDevices.getUserMedia(constraints)
 
         function sendToFlask(videoObj){
             var fd = new FormData();
-            fd.append('file', videoObj, ('Secuencia1'+"_1.mp4"));
+            fd.append('file', videoObj, ('Secuencia2'+"_1.mp4"));
             $.ajax({
                 type: "POST",
                 url: '/guardarVideo',
