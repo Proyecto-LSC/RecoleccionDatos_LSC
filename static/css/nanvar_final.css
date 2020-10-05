@@ -9,7 +9,18 @@ header {
     top: 0;
     left: 0;
     padding: 0 100px;
-    background: #FFFFFF;
+    background: #262626;
     width: 100%;
     box-sizing: border-box;
 }
+
+header .logo {
+    color: #fff;
+    height: 50px;
+    line-height: 50px;
+    font-size: 24px;
+    float: left;
+    font-weight: bold;
+}
+
+
