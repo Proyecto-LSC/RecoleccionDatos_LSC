@@ -30,7 +30,9 @@ def getVideoManos():
             filename = str(filepath.parents[0].name) + "_" + str(lastVideoNum) + ".mp4"
             video.save(fullpath + filename)
             filepath = Path(fullpath + filename)
-            video2frames(filepath)
+            
+        video2frames(filepath)
+            
             
     return Response("success")
 
