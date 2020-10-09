@@ -36,18 +36,20 @@ const detenerConteo = () => {
     $duracion.textContent = "";
 }
 
-/*const antesGrabacion = () => {
+function antesGrabacion(){
     document.getElementById("inicioTimer").style.display = 'inline-block';
     document.getElementById("circle").style.display = 'inline-flex';
-    var numSeg = 5;
-    for (let i = 1; i <= 5; i++) {
-        document.querySelector('#circle').textContent = numSeg;
-        setTimeout(() => console.log(`#${i}`), 1000 * i);
-        numSeg -= 1;
-    }
-    document.getElementById("inicioTimer").style.display = 'none';
-    document.getElementById("circle").style.display = 'none';
-}*/
+    (function loop (i) {          
+        countdown = setTimeout(function () {   
+            document.querySelector("#circle").textContent = i;            
+            if (i--) loop(i); // call the function until end
+        }, 1000); // 1 second delay
+    })(3);
+}
+
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
 if (navigator.mediaDevices.getUserMedia) {
     var recordedChunks = [];
@@ -58,7 +60,10 @@ if (navigator.mediaDevices.getUserMedia) {
             
             var mediaRecorder = new MediaRecorder(stream);
 
-            record.onclick = function startRecording() {
+            record.onclick = async function startRecording() {
+                document.getElementById("record").style.display = 'none';
+                antesGrabacion();
+                await sleep(5000);
                 var numSec = 15;
                 recordedChunks = [];
                 mediaRecorder.start();
@@ -70,7 +75,8 @@ if (navigator.mediaDevices.getUserMedia) {
 				setTimeout(event => {
 					console.log("stopping");
 					document.getElementById("recordingIcon").style.display = 'none';
-					document.getElementById("textGrabando").style.display = 'none';
+                    document.getElementById("textGrabando").style.display = 'none';
+                    document.getElementById("record").style.display = 'inline-block';
                     mediaRecorder.stop();
                     detenerConteo();
 				}, (numSec*1000));
@@ -78,6 +84,7 @@ if (navigator.mediaDevices.getUserMedia) {
             stop.onclick = function() {
                 document.getElementById("recordingIcon").style.display = 'none';
                 document.getElementById("textGrabando").style.display = 'none';
+                document.getElementById("record").style.display = 'inline-block';
                 mediaRecorder.stop();
                 detenerConteo();
                 console.log("recorder stopped");
