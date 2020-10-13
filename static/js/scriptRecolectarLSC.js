@@ -64,7 +64,7 @@ if (navigator.mediaDevices.getUserMedia) {
                 document.getElementById("record").style.display = 'none';
                 antesGrabacion();
                 await sleep(5000);
-                var numSec = 15;
+                var numSec = 6;
                 recordedChunks = [];
                 mediaRecorder.start();
                 comenzarAContar();
