@@ -16,17 +16,13 @@
   </head>
 
   <body>
-    
-    
-    
-
 
     <div class="container-fluid mt-4 mb-4  ">
       <div class="row">
-        <div class="col-6">
+        <div class="col-6 mt-4">
           <div class="container-fluid" >
             <div class="row">
-              <div class="col-12" >
+              <div class="col-12 mt-4" >
                 <center>
                   <video id="video"  class="video-element"></video>
                   <p id="duracion"></p>
@@ -34,10 +30,8 @@
               </div>
               <div style="text-align: justify;">
                 <center>
-                <br>
                     La siguiente información sera recopilada con el objetivo de recoger suficente cantidad de imagenes de las manos,
                     en diferentes posiciones en la parte superior del tronco.
-                <br>
               </center>
               </div>
             </div>
@@ -48,16 +42,13 @@
         <div class="col-6 ">
           <div class="container-fluid ">
             <div class="row">
-              <div class="col-12 mb-2 pt-2 pb-4">
+              <div class="col-12 mb-4">
                 <strong>Bienvenios al Recolector de posiciones de Manos de la Aunar.</strong>
               </div>
-              <!--<div class="col-12">
-                <img src=""   alt="..." id="imagecarousel">
-              </div>
-              -->
-              <div class="col-6">
+              <div class="col-12" id="imagenesCarou">
                 <div id="carouselPoses" class="carousel slide" data-ride="carousel" data-pause="false">
                   <div class="carousel-inner">
+                    <center>
                     <div class="carousel-item active">
                         <img src="static/img/carouselhands/secuencia1/pose1.jpg"  alt="...">
                     </div>
@@ -71,13 +62,13 @@
                       <img src="static/img/carouselhands/secuencia1/pose4.jpg"  alt="...">
                     </div>
                     <div class="carousel-item">
-                      <img src="static/img/carouselhands/secuencia1/pose5.png"  alt="...">
+                      <img src="static/img/carouselhands/secuencia1/pose5.jpg"  alt="...">
                     </div>
                     <div class="carousel-item">
                       <img src="static/img/carouselhands/secuencia1/pose6.jpg"  alt="...">
                     </div>
                     <div class="carousel-item">
-                      <img src="static/img/carouselhands/secuencia1/pose7.png"  alt="...">
+                      <img src="static/img/carouselhands/secuencia1/pose7.jpg"  alt="...">
                     </div>
                     <div class="carousel-item">
                       <img src="static/img/carouselhands/secuencia1/pose8.jpg"  alt="...">
@@ -88,14 +79,24 @@
                     <div class="carousel-item">
                       <img src="static/img/carouselhands/secuencia1/pose10.jpg"  alt="...">
                     </div>
+                    <div class="carousel-item">
+                      <img src="static/img/carouselhands/secuencia1/pose11.jpg"  alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="static/img/carouselhands/secuencia1/pose12.jpg"  alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="static/img/carouselhands/secuencia1/pose13.jpg"  alt="...">
+                    </div>
+                    <div class="carousel-item">
+                      <img src="static/img/carouselhands/secuencia1/pose14.jpg"  alt="...">
+                    </div>
+                  </center>
                   </div>
                 </div>
-                
-                  
                 </div>
-                <div class="col-6 " >
+                <div class="col-12 mt-4" id="instrucciones">
                   <p style="text-align: justify;">
-                    
                     <strong>Recomendaciones para la correcta captura de datos:</strong>
                     <ul>
                       <li>familiarizar mediante la observacion de  las posiciones antes de empezar a grabar </li>
@@ -103,13 +104,16 @@
                       <li>Si esta listo, empiece a grabar.</li>
                     </ul>
                   </p>
-                  <br>
-                  <p><strong><center>* La Aunar y el Grupo de investigación SESIA le agradece su participación. * </center></strong></p>
-                  <br>
                   <center>
-                    <button  class="btn btn-danger btn-lg " id="btnComenzarGrabacion">Comenzar ( Grabar ) </button>
-                    <button  class="btn btn-secondary" id="btnDetenerGrabacion">Detener</button>
+                    <button class="btn btn-info btn-lg" id="listo"> Listo </button>
                   </center>
+              </div>
+              <div class="col-12" id="grabar">
+                <p><strong><center>* La Aunar y el Grupo de investigación SESIA le agradece su participación. * </center></strong></p>
+                <center>
+                  <button  class="btn btn-danger btn-lg " id="btnComenzarGrabacion">Comenzar ( Grabar ) </button>
+                  <button  class="btn btn-secondary" id="btnDetenerGrabacion">Detener</button>
+                </center>
               </div>
               </div>
               
@@ -117,36 +121,23 @@
 
         </div>
       </div>
-    </div>
-    
-    
-    
-
-    
-
-
-
-    
-
-
-
+    </div>  
+    <footer class="footer">
+      <div class=" mt-4">
+        {% include "Footer.html" %}
+      </div>
+    </footer>
   
-      <footer class="footer">
-        <div class=" mt-4">
-          {% include "Footer.html" %}
-        </div>
-      </footer>
-    
-    <!-- Footer -->
-    
-	  <!-- Footer -->
+  <!-- Footer -->
+  
+  <!-- Footer -->
 
-    <!-- Optional JavaScript -->
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
-    <script src="/static/js/video2.js"></script>
-    <script src="/static/js/carousel.js"></script>
+  <!-- Optional JavaScript -->
+  <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+  <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV" crossorigin="anonymous"></script>
+  <script src="/static/js/video2.js"></script>
+  <script src="/static/js/carousel.js"></script>
 
   </body>
 </html>
