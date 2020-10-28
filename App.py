@@ -67,13 +67,19 @@ def video2frames(filepath):
     vidcap = cv2.VideoCapture(str(filepath))
     list_of_files = glob.glob(str(filepath.parents[1]) + '/frames/*')
     success = True
+    fps = vidcap.get(cv2.CAP_PROP_FPS)
     count = 0
     imgNum = 0
     
+    if (fps==1000):
+        fps=30
+    else:
+        fps=15
+
     while success:
         success,image = vidcap.read()
         if not list_of_files:
-            if count%(0.6*30) == 0 :
+            if count%(0.6*fps) == 0 :
                 imgNum +=1
                 cv2.imwrite((str(filepath.parents[1]) + "/frames/" + str(filepath.parents[1].name) + "_%d.jpg") % imgNum, image) # save frame as JPEG file
         else:
@@ -81,7 +87,7 @@ def video2frames(filepath):
             latest_file = max(list_of_files, key=os.path.getctime)
             tempPath = Path(latest_file)
             lastImgNum = int(tempPath.stem.split("_") [1]) + 1
-            if count%(0.6*30) == 0 :
+            if count%(0.6*fps) == 0 :
                 cv2.imwrite((str(filepath.parents[1]) + "/frames/" + str(filepath.parents[1].name) + "_%d.jpg") % lastImgNum, image) # save frame as JPEG file
         count += 1
 
