@@ -121,6 +121,7 @@ if (navigator.mediaDevices.getUserMedia) {
             contentType: false,
             success: function() {
                 console.log("Elemento Enviado");
+                //document.getElementById("record").style.display = 'inline-block';
             }
         });
     }

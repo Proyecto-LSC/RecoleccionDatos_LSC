@@ -46,26 +46,26 @@ def getVideo():
     fullpath = datasetPath + filename[:-6] + "/"
     Path(fullpath).mkdir(parents=True, exist_ok=True)
     Path(fullpath + "frames/").mkdir(parents=True, exist_ok=True)
-    filepath = Path(fullpath + filename)
+    Path(fullpath + "videos/").mkdir(parents=True, exist_ok=True)
+    filepath = Path(fullpath + "videos/" + filename)
     if video:
         if not (os.path.isfile(filepath)):
             video.save(filepath)
         else:
-            list_of_files = glob.glob(str(filepath.parents[0]) + '/*')
+            list_of_files = glob.glob(str(filepath.parents[0]) + "/*")
             latest_file = max(list_of_files, key=os.path.getctime)
             tempPath = Path(latest_file)
-            lastVideoNum = int(tempPath.stem.split("_", 1) [1]) + 1
-            filename = str(filepath.parents[0].name) + "_" + str(lastVideoNum) + ".mp4"
-            video.save(fullpath + filename)
-            filepath = Path(fullpath + filename)
-    
+            lastVideoNum = int(tempPath.stem.split("_") [1]) + 1
+            filename = str(filepath.parents[1].name) + "_" + str(lastVideoNum) + ".mp4"
+            video.save(fullpath + "videos/" + filename)
+            filepath = Path(fullpath + "videos/" + filename)   
     video2frames(filepath)
     return Response("success")
 
 
 def video2frames(filepath):
     vidcap = cv2.VideoCapture(str(filepath))
-    list_of_files = glob.glob(str(filepath.parents[0]) + '/frames/*')
+    list_of_files = glob.glob(str(filepath.parents[1]) + '/frames/*')
     success = True
     count = 0
     imgNum = 0
@@ -75,14 +75,14 @@ def video2frames(filepath):
         if not list_of_files:
             if count%(0.6*30) == 0 :
                 imgNum +=1
-                cv2.imwrite((str(filepath.parents[0]) + "/frames/" + str(filepath.parents[0].name) + "_%d.jpg") % imgNum, image) # save frame as JPEG file
+                cv2.imwrite((str(filepath.parents[1]) + "/frames/" + str(filepath.parents[1].name) + "_%d.jpg") % imgNum, image) # save frame as JPEG file
         else:
-            list_of_files = glob.glob(str(filepath.parents[0]) + '/frames/*')
+            list_of_files = glob.glob(str(filepath.parents[1]) + '/frames/*')
             latest_file = max(list_of_files, key=os.path.getctime)
             tempPath = Path(latest_file)
-            lastImgNum = int(tempPath.stem.split("_", 1) [1]) + 1
+            lastImgNum = int(tempPath.stem.split("_") [1]) + 1
             if count%(0.6*30) == 0 :
-                cv2.imwrite((str(filepath.parents[0]) + "/frames/" + str(filepath.parents[0].name) + "_%d.jpg") % lastImgNum, image) # save frame as JPEG file
+                cv2.imwrite((str(filepath.parents[1]) + "/frames/" + str(filepath.parents[1].name) + "_%d.jpg") % lastImgNum, image) # save frame as JPEG file
         count += 1
 
 @app.route('/recolectorManos')
