@@ -129,7 +129,7 @@ if (navigator.mediaDevices.getUserMedia) {
 function nextLetra(){
     document.getElementById("mostrarVideo").pause();
 	var letraNext = letra_next.value;
-	var signs = ['a','b','c','d','e','f','i','k','l','m','n','o','p','q','r','t','u','v','w','x','y','espacio','parar'];
+	var signs = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','ñ','o','p','q','r','s','t','u','v','w','x','y','z','espacio','parar'];
 	var index = signs.indexOf(letraNext);
 
 	document.querySelector('#letra_actual').textContent = 'Letra ' + letraNext.toUpperCase();

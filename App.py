@@ -40,7 +40,12 @@ def getVideoManos():
 @app.route("/guardarVideo", methods=['POST'])
 def getVideo():
     video = request.files['file']
-    filename = video.filename
+    
+    if video.filename!='ñ_1.mp4':
+        filename = video.filename
+    else:
+        filename = 'ne_1.mp4'
+
     datasetPath = "static/Dataset_LSC/"
     Path(datasetPath).mkdir(parents=True, exist_ok=True)
     fullpath = datasetPath + filename[:-6] + "/"
