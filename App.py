@@ -17,23 +17,23 @@ def getVideoManos():
     fullpath = datasetPath + filename[:-6] + "/"
     Path(fullpath).mkdir(parents=True, exist_ok=True)
     Path(fullpath + "frames/").mkdir(parents=True, exist_ok=True)
-    filepath = Path(fullpath + filename)
-    
+    Path(fullpath + "videos/").mkdir(parents=True, exist_ok=True)
+    filepath = Path(fullpath + "videos/" + filename)
+ 
     if video:
+        print("si hay video")
         if not (os.path.isfile(filepath)):
             video.save(filepath)
         else:
             list_of_files = glob.glob(str(filepath.parents[0]) + '/*')
             latest_file = max(list_of_files, key=os.path.getctime)
             tempPath = Path(latest_file)
-            lastVideoNum = int(tempPath.stem.split("_", 1) [1]) + 1
-            filename = str(filepath.parents[0].name) + "_" + str(lastVideoNum) + ".mp4"
-            video.save(fullpath + filename)
-            filepath = Path(fullpath + filename)
-            
-    video2frames(filepath)
-            
-            
+            lastVideoNum = int(tempPath.stem.split("_") [1]) + 1
+            filename = str(filepath.parents[1].name) + "_" + str(lastVideoNum) + ".mp4"
+            video.save(fullpath + "videos/" + filename)
+            filepath = Path(fullpath + "videos/" + filename)
+
+    video2frames(filepath) 
     return Response("success")
 
 
@@ -63,7 +63,7 @@ def getVideo():
             lastVideoNum = int(tempPath.stem.split("_") [1]) + 1
             filename = str(filepath.parents[1].name) + "_" + str(lastVideoNum) + ".mp4"
             video.save(fullpath + "videos/" + filename)
-            filepath = Path(fullpath + "videos/" + filename)   
+            filepath = Path(fullpath + "videos/" + filename)
     video2frames(filepath)
     return Response("success")
 
