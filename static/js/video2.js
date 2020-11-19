@@ -36,18 +36,18 @@ const detenerConteo = () => {
 }
 
 navigator.mediaDevices.getUserMedia(constraints)
-    .then(function (mediaStream) {
+    .then(function(mediaStream) {
         video.srcObject = mediaStream;
         video.play();
         var mediaRecorder = new MediaRecorder(mediaStream, { mimeType: "video/webm; codecs=vp9" });
-        record.onclick = function () {
-            var numSec=112;
+        record.onclick = function() {
+            var numSec = 112;
             console.log("pi ti ");
             mediaRecorder.start();
-            $('.carousel').carousel(0,{
+            /*$('.carousel').carousel(0,{
                 interval: 2000
                 
-              })
+              })*/
             comenzarAContar();
             console.log("hola");
             console.log(mediaRecorder.state);
@@ -60,14 +60,14 @@ navigator.mediaDevices.getUserMedia(constraints)
                 detenerConteo();
                 stop.disabled = true;
                 record.disabled = false;
-            }, (numSec*1000));
+            }, (numSec * 1000));
         }
 
-        mediaRecorder.ondataavailable = function (e) {
+        mediaRecorder.ondataavailable = function(e) {
             chunks.push(e.data);
         }
 
-        stop.onclick = function () {
+        stop.onclick = function() {
             mediaRecorder.stop();
             detenerConteo();
             console.log(mediaRecorder.state);
@@ -75,60 +75,50 @@ navigator.mediaDevices.getUserMedia(constraints)
             record.disabled = false;
         }
 
-        mediaRecorder.onstop = function (e) {
+        mediaRecorder.onstop = function(e) {
             const blobVideo = new Blob(chunks, { type: "video/mp4" });
-            chunks=[];
-            
+            chunks = [];
+
             sendToFlask(blobVideo)
         }
     }).catch(
-        function (err) {
+        function(err) {
             console.log(err.name + ": " + err.message);
         });
 
 
 
-        function sendToFlask(videoObj){
-            var fd = new FormData();
-            fd.append('file', videoObj, ('Secuencia1'+"_1.mp4"));
-            $.ajax({
-                type: "POST",
-                url: '/guardarVideoMano',
-                data: fd,
-                processData: false,
-                contentType: false,
-                success: function() {
-                    console.log("Elemento Enviado");
-                }
-            });
+function sendToFlask(videoObj) {
+    var fd = new FormData();
+    fd.append('file', videoObj, ('Secuencia1' + "_1.mp4"));
+    $.ajax({
+        type: "POST",
+        url: '/guardarVideoMano',
+        data: fd,
+        processData: false,
+        contentType: false,
+        success: function() {
+            console.log("Elemento Enviado");
         }
+    });
+}
 
 
-        function muestra_oculta(){
-                var el = document.getElementById("imagenesCarou");
-                var ela = document.getElementById("grabar"); //se define la variable "el" igual a nuestro div
-                el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
-                ela.style.display = (ela.style.display=='none') ? 'block' : 'none';
-            }
+function muestra_oculta() {
+    var el = document.getElementById("imagenesCarou");
+    var ela = document.getElementById("grabar"); //se define la variable "el" igual a nuestro div
+    el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+    ela.style.display = (ela.style.display == 'none') ? 'block' : 'none';
+}
 
-        listo.onclick = function (){
-            var gravar = document.getElementById("grabar");
-            gravar.style.display = (gravar.style.display='none') ? 'block' : 'none';
-            var ela = document.getElementById("imagenesCarou");
-            ela.style.display = (ela.style.display=='none') ? 'block' : 'none';
-            var el = document.getElementById("instrucciones");
-            el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
-        }
-
-
-        muestra_oculta();
+listo.onclick = function() {
+    var gravar = document.getElementById("grabar");
+    gravar.style.display = (gravar.style.display = 'none') ? 'block' : 'none';
+    var ela = document.getElementById("imagenesCarou");
+    ela.style.display = (ela.style.display == 'none') ? 'block' : 'none';
+    var el = document.getElementById("instrucciones");
+    el.style.display = (el.style.display == 'none') ? 'block' : 'none'; //damos un atributo display:none que oculta el div
+}
 
 
-
-
-
-
-
-
-
-
+muestra_oculta();
